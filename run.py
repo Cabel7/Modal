@@ -6,7 +6,7 @@ volume = modal.NetworkFileSystem.new().persisted("stable-diffusion-webui")
 @stub.function(
     image=modal.Image.from_registry("nvidia/cuda:12.2.0-base-ubuntu22.04", add_python="3.11")
     .run_commands(
-       "apt update -y && \
+        "apt update -y && \
         apt install -y software-properties-common && \
         apt update -y && \
         add-apt-repository -y ppa:git-core/ppa && \
@@ -27,8 +27,8 @@ async def run():
     # os.system(f"rm -rf /content/stable-diffusion-webui/repositories")
     os.system(f"git reset --hard")
     os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/hassaku-hentai-model/resolve/main/hassakuHentaiModel_v11.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o hassakuHentaiModel_v11.safetensors")
-    os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/xxmix9realistic/resolve/main/xxmix9realistic_v30.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o xxmix9realistic_v30.safetensors")
-    os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt -d /content/stable-diffusion-webui/models/Stable-diffusion -o xxmix9realistic_v30.vae.pt")
+    # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/juggernaut-xl/resolve/main/juggernautXL_version2.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o juggernautXL_version2.safetensors")
+    # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/sd_xl_refiner_1.0/resolve/main/sd_xl_refiner_1.0_0.9vae.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o sd_xl_refiner_1.0_0.9vae.safetensors")
     os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
     # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
     sys.path.append('/content/stable-diffusion-webui')
