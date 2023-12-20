@@ -27,8 +27,8 @@ async def run():
     # os.system(f"rm -rf /content/stable-diffusion-webui/repositories")
     os.system(f"git reset --hard")
     os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/hassaku-hentai-model/resolve/main/hassakuHentaiModel_v11.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o hassakuHentaiModel_v11.safetensors")
-    # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/xxmix9realistic/resolve/main/xxmix9realistic_v30.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o xxmix9realistic_v30.safetensors")
-    # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt -d /content/stable-diffusion-webui/models/Stable-diffusion -o xxmix9realistic_v30.vae.pt")
+    os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/xxmix9realistic/resolve/main/xxmix9realistic_v30.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o xxmix9realistic_v30.safetensors")
+    os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt -d /content/stable-diffusion-webui/models/Stable-diffusion -o xxmix9realistic_v30.vae.pt")
     os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
     # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
     sys.path.append('/content/stable-diffusion-webui')
