@@ -17,21 +17,22 @@ volume = modal.NetworkFileSystem.new().persisted("stable-diffusion-webui")
         pip install -q torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2+cu118 torchtext==0.15.2 torchdata==0.6.1 --extra-index-url https://download.pytorch.org/whl/cu118 && \
         pip install -q xformers==0.0.20 triton==2.0.0 packaging==23.1"
     ),
-    network_file_systems={"/content/stable-diffusion-webui": volume},
+    network_file_systems={"/content/ui": volume},
     gpu="T4",
     timeout=60000,
 )
 async def run():
-    os.system(f"git clone -b v2.6 https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui")
-    os.chdir(f"/content/stable-diffusion-webui")
+    os.system(f"git clone -b v2.6 https://dagshub.com/camenduru/ui")
+    os.system(f"git clone https://github.com/camenduru/sd-civitai-browser /content/ui/extensions/sd-civitai-browser")
+    os.chdir(f"/content/ui")
     # os.system(f"rm -rf /content/stable-diffusion-webui/repositories")
     os.system(f"git reset --hard")
-    os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/hassaku-hentai-model/resolve/main/hassakuHentaiModel_v11.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o hassakuHentaiModel_v11.safetensors")
+    os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/hassaku-hentai-model/resolve/main/hassakuHentaiModel_v11.safetensors -d /content/ui/models/Stable-diffusion -o hassakuHentaiModel_v11.safetensors")
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/juggernaut-xl/resolve/main/juggernautXL_version2.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o juggernautXL_version2.safetensors")
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/sd_xl_refiner_1.0/resolve/main/sd_xl_refiner_1.0_0.9vae.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o sd_xl_refiner_1.0_0.9vae.safetensors")
-    os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
+    os.environ['HF_HOME'] = '/content/ui/cache/huggingface'
     # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
-    sys.path.append('/content/stable-diffusion-webui')
+    sys.path.append('/content/ui')
     sys.argv = shlex.split("--cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
     from modules import launch_utils
     launch_utils.startup_timer.record("initial startup")
