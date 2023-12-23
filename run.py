@@ -32,7 +32,7 @@ async def run():
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/juggernaut-xl/resolve/main/juggernautXL_version2.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o juggernautXL_version2.safetensors")
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/sd_xl_refiner_1.0/resolve/main/sd_xl_refiner_1.0_0.9vae.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o sd_xl_refiner_1.0_0.9vae.safetensors")
     os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
-    # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
+    # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share --enable-insecure-extension-access")
     sys.path.append('/content/stable-diffusion-webui')
     sys.argv = shlex.split("--cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
     from modules import launch_utils
