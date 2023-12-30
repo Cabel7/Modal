@@ -18,7 +18,7 @@ volume = modal.NetworkFileSystem.new().persisted("stable-diffusion-webui")
         pip install -q xformers==0.0.20 triton==2.0.0 packaging==23.1"
     ),
     network_file_systems={"/content/ui": volume},
-    gpu="T4",
+    gpu="A10G",
     memory=40, 
     timeout=60000,
 )
