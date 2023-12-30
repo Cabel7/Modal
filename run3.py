@@ -19,6 +19,7 @@ volume = modal.NetworkFileSystem.new().persisted("stable-diffusion-webui")
     ),
     network_file_systems={"/content/ui": volume},
     gpu="T4",
+    count=2, 
     timeout=60000,
 )
 async def run():
