@@ -27,7 +27,7 @@ async def run():
     os.system(f"git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git /content/stable-diffusion-webui/extensions/tag-autocomplete") 
     os.system(f"git clone https://github.com/camenduru/stable-diffusion-webui-huggingface /content/stable-diffusion-webui/extensions/stable-diffusion-webui-huggingface") 
     os.system(f"git clone https://github.com/Cabel7/Webui/tree/bump-Pillow-blendmodes-dependency/modules /content/stable-diffusion-webui/modules") 
-    os.system(f"git clone https://github.com/d8ahazard/sd_dreambooth_extension.git /content/stable-diffusion-webui/extensions/Dreambooth-Stable-Diffusion") 
+    os.system(f"git clone https://github.com/XavierXiao/Dreambooth-Stable-Diffusion /content/stable-diffusion-webui/extensions/Dreambooth-Stable-Diffusion") 
     os.chdir(f"/content/stable-diffusion-webui")
     # os.system(f"rm -rf /content/stable-diffusion-webui/repositories")
     os.system(f"git reset --hard")
@@ -43,7 +43,7 @@ async def run():
     os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
     # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share --enable-insecure-extension-access")
     sys.path.append('/content/stable-diffusion-webui')
-    sys.argv = shlex.split("--cors-allow-origins=* --xformers --theme dark --gradio-debug --share --no-half-vae --medvram --enable-insecure-extension-access")
+    sys.argv = shlex.split("--cors-allow-origins=* --xformers --theme dark --gradio-debug --share --no-half-vae --enable-insecure-extension-access")
     from modules import launch_utils
     launch_utils.startup_timer.record("initial startup")
     launch_utils.prepare_environment()
