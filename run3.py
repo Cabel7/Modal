@@ -1,6 +1,6 @@
 import modal, os, sys, shlex
 
-# stub = modal.Stub("stable-diffusion-webui")
+stub = modal.Stub("stable-diffusion-webui")
 volume = modal.NetworkFileSystem.persisted("stable-diffusion-webui")
 
 @stub.function(
