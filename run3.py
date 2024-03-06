@@ -1,7 +1,7 @@
 import modal, os, sys, shlex
 
-stub = modal.Stub("stable-diffusion-webui")
-volume = modal.NetworkFileSystem.new().persisted("stable-diffusion-webui")
+# stub = modal.Stub("stable-diffusion-webui")
+volume = modal.NetworkFileSystem.persisted("stable-diffusion-webui")
 
 @stub.function(
     image=modal.Image.from_registry("nvidia/cuda:12.2.0-base-ubuntu22.04", add_python="3.11")
