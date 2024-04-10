@@ -4,7 +4,7 @@ stub = modal.Stub("stable-diffusion-webui")
 volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_missing=True)
 
 @stub.function(
-    image=modal.Image.from_registry("nvidia/cuda:12.2.0-base-ubuntu22.04", add_python="3.10.6")
+    image=modal.Image.from_registry("nvidia/cuda:12.2.0-base-ubuntu22.04", add_python="3.11")
     .run_commands(
         "apt update -y && \
         apt install -y software-properties-common && \
