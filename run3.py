@@ -11,7 +11,7 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
         apt update -y && \
         add-apt-repository -y ppa:git-core/ppa && \
         apt update -y && \
-        apt install -y git git-lfs && \
+        apt install -y git && \
         git --version  && \
         apt install -y aria2 libgl1 libglib2.0-0 wget && \
         pip install -q torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2+cu118 torchtext==0.15.2 torchdata==0.6.1 --extra-index-url https://download.pytorch.org/whl/cu118 && \
@@ -23,9 +23,9 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
 )
 async def run():
     # os.system(f"git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/stable-diffusion-webui")
-    os.system(f"git clone https://github.com/Cabel7/Webui /content/stable-diffusion-webui")
+    # os.system(f"git clone https://github.com/Cabel7/Webui /content/stable-diffusion-webui")
     
-    # os.system(f"git clone -b v2.6 https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui")
+    os.system(f"git clone -b v2.6 https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui")
     os.system(f"git clone https://github.com/camenduru/sd-civitai-browser /content/stable-diffusion-webui/extensions/sd-civitai-browser")
     os.system(f"git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git /content/stable-diffusion-webui/extensions/tag-autocomplete") 
     os.system(f"git clone https://github.com/camenduru/stable-diffusion-webui-huggingface /content/stable-diffusion-webui/extensions/stable-diffusion-webui-huggingface") 
