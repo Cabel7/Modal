@@ -13,7 +13,7 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
         apt update -y && \
         apt install -y git git-lfs && \
         git --version  && \
-        apt-get install gnutls-bin && \
+        apt install -y gnutls-bin && \
         git config --global http.sslVerify false && \
         git config --global http.postBuffer 1048576000 && \
         apt install -y aria2 libgl1 libglib2.0-0 wget && \
