@@ -12,7 +12,6 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
         add-apt-repository -y ppa:git-core/ppa && \
         apt update -y && \
         apt install -y build-essential libssl-dev git && \
-        apt update -y && \
         apt install -y git git-lfs && \
         git --version && \
         git config --global --unset http.sslBackend && \
