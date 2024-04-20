@@ -11,8 +11,6 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
         apt update -y && \
         add-apt-repository -y ppa:git-core/ppa && \
         apt update -y && \
-        apt install -y git git-lfs && \
-        git --version  && \
         apt install -y aria2 libgl1 libglib2.0-0 wget && \
         pip install -q torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2+cu118 torchtext==0.15.2 torchdata==0.6.1 --extra-index-url https://download.pytorch.org/whl/cu118 && \
         pip install -q xformers==0.0.20 triton==2.0.0 packaging==23.1"
@@ -20,7 +18,23 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
     network_file_systems={"/content/stable-diffusion-webui": volume},
     gpu="T4",
     timeout=60000,
+
+    GIT_SHA = (
+    "abd922bd0c43a504e47eca2ed354c3634bd00834"
+    )
+    image = (
+    image.apt_install("git")
+    # Perform a shallow fetch of just the target `diffusers` commit, checking out
+    # the commit in the container's home directory, /root. Then install `diffusers`
+    .run_commands(
+        "cd /root && git init .",
+        "cd /root && git remote add origin https://github.com/huggingface/diffusers",
+        f"cd /root && git fetch --depth=1 origin {GIT_SHA} && git checkout {GIT_SHA}",
+        "cd /root && pip install -e .",
+    )
 )
+
+
 async def run():
     # os.system(f"git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/stable-diffusion-webui")
     # os.system(f"git clone https://github.com/Cabel7/Webui /content/stable-diffusion-webui")
