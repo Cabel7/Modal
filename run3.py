@@ -25,7 +25,8 @@ GIT_SHA = (
     "abd922bd0c43a504e47eca2ed354c3634bd00834"  # specify the commit to fetch
 ),
 image = (
-    image.apt_install("git"),
+    image.apt_install("git")
+
 
 async def run():
     # os.system(f"git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/stable-diffusion-webui")
