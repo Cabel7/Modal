@@ -18,20 +18,11 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
     network_file_systems={"/content/stable-diffusion-webui": volume},
     gpu="T4",
     timeout=60000,
-
     GIT_SHA = (
     "abd922bd0c43a504e47eca2ed354c3634bd00834"
-    )
+    ),
     image = (
-    image.apt_install("git")
-    # Perform a shallow fetch of just the target `diffusers` commit, checking out
-    # the commit in the container's home directory, /root. Then install `diffusers`
-    .run_commands(
-        "cd /root && git init .",
-        "cd /root && git remote add origin https://github.com/huggingface/diffusers",
-        f"cd /root && git fetch --depth=1 origin {GIT_SHA} && git checkout {GIT_SHA}",
-        "cd /root && pip install -e .",
-    )
+        image.apt_install("git"),
 )
 
 
