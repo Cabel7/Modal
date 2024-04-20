@@ -21,8 +21,8 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
     gpu="T4",
     timeout=60000,
 )
-GIT_SHA = (
-    "abd922bd0c43a504e47eca2ed354c3634bd00834")
+# GIT_SHA = (
+#    "abd922bd0c43a504e47eca2ed354c3634bd00834")
 image = (image.apt_install("git"))
 
 
