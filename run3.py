@@ -24,8 +24,6 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
     image = (
         image.apt_install("git"),
 )
-
-
 async def run():
     # os.system(f"git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/stable-diffusion-webui")
     # os.system(f"git clone https://github.com/Cabel7/Webui /content/stable-diffusion-webui")
