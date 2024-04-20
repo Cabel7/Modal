@@ -25,7 +25,7 @@ async def run():
     # os.system(f"git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/stable-diffusion-webui")
     # os.system(f"git clone https://github.com/Cabel7/Webui /content/stable-diffusion-webui")
     
-    os.system(f"git clone --depth=1 https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui")
+    os.system(f"wget https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui")
     os.system(f"git clone https://github.com/camenduru/sd-civitai-browser /content/stable-diffusion-webui/extensions/sd-civitai-browser")
     #os.system(f"git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git /content/stable-diffusion-webui/extensions/tag-autocomplete") 
     # os.system(f"git clone https://github.com/camenduru/stable-diffusion-webui-huggingface /content/stable-diffusion-webui/extensions/stable-diffusion-webui-huggingface") 
