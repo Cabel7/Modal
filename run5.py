@@ -25,8 +25,12 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
         )
         .run_commands("pip install -q torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2+cu118 torchtext==0.15.2 torchdata==0.6.1 --extra-index-url https://download.pytorch.org/whl/cu118")
         .run_commands("pip install -q xformers==0.0.20 triton==2.0.0 packaging==23.1")
-    ),
+    )
+)
+@app.function(
     network_file_systems={"/content/stable-diffusion-webui": volume},
+    gpu="T4",
+    timeout=60000,
 )
             
 async def run():
