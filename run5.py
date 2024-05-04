@@ -1,7 +1,7 @@
 import modal, os, sys, shlex, subprocess
 
 app = modal.App("stable-diffusion-webui")
-volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_missing=True)
+# volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_missing=True)
 
 @app.function(
     image=(
@@ -27,7 +27,6 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
         .run_commands("pip install -q xformers==0.0.20 triton==2.0.0 packaging==23.1")
         .run_commands("git clone -b v2.6 https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui")
     ),
-    network_file_systems={"/content/stable-diffusion-webui": volume},
     gpu="T4",
     timeout=60000,
 )
