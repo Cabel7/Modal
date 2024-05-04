@@ -29,7 +29,10 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
 )
 
 @app.function(
-    image=(modal.Image.run_commands("git clone -b v2.6 https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui"),
+    image=(modal.Image.run_commands("git clone -b v2.6 https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui")
+          )
+)
+    
            
 async def run():
     # os.system(f"git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/stable-diffusion-webui")
