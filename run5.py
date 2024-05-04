@@ -54,7 +54,7 @@ def run():
     os.chdir(f"/content/stable-diffusion-webui")
     # os.system(f"rm -rf /content/stable-diffusion-webui/repositories")    
     os.system(f"git reset --hard")
-    os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/Jagerblue/Anime_Dex/blob/main/.ipynb_checkpoints/Untitled-checkpoint.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o Aniverse_thxEd14Pruned.safetensors")
+    os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/anylora/resolve/main/anyloraCheckpoint_bakedvaeFtmseFp16NOT.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o anyloraCheckpoint_bakedvaeFtmseFp16NOT.safetensors")
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/Jagerblue/Sdxl/resolve/main/Anime_Pastel_Face.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o Anime_Pastel_Face.safetensors")
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/Jagerblue/Sdxl/resolve/main/Goofy_Anime_Pastel.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o Goofy_Anime_Pastel.safetensors")
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/Jagerblue/Sdxl/resolve/main/Hass_APF.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o Hass_APF.safetensors")
