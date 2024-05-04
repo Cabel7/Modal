@@ -8,24 +8,23 @@ image=(
         "nvidia/cuda:12.2.0-base-ubuntu22.04", add_python="3.11"
     )
     .apt_install(
-            "software-properties-common",
-            "git",
-            "git-lfs",
-            "coreutils",
-            "aria2",
-            "libgl1",
-            "libglib2.0-0",
-            "curl",
-            "wget",
-            "libsm6",
-            "libxrender1",
-            "libxext6",
-            "ffmpeg",
-        )
-        .run_commands("pip install -q torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2+cu118 torchtext==0.15.2 torchdata==0.6.1 --extra-index-url https://download.pytorch.org/whl/cu118")
-        .run_commands("pip install -q xformers==0.0.20 triton==2.0.0 packaging==23.1")
-        .run_commands("git clone -b v2.6 https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui")
+        "software-properties-common",
+        "git",
+        "git-lfs",
+        "coreutils",
+        "aria2",
+        "libgl1",
+        "libglib2.0-0",
+        "curl",
+        "wget",
+        "libsm6",
+        "libxrender1",
+        "libxext6",
+        "ffmpeg",
     )
+    .run_commands("pip install -q torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2+cu118 torchtext==0.15.2 torchdata==0.6.1 --extra-index-url https://download.pytorch.org/whl/cu118")
+    .run_commands("pip install -q xformers==0.0.20 triton==2.0.0 packaging==23.1")
+    .run_commands("git clone -b v2.6 https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui")
 )
 
 app = modal.App("stable-diffusion-webui", image=image)
