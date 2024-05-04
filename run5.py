@@ -32,7 +32,7 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
     timeout=60000,
 )
             
-async def run():
+def run():
     os.chdir(f"/content/stable-diffusion-webui")
     # os.system(f"git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/stable-diffusion-webui")
     # os.system(f"git clone https://github.com/Cabel7/Webui /content/stable-diffusion-webui")
