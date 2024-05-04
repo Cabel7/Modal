@@ -65,6 +65,6 @@ def run():
     launch_utils.prepare_environment()
     launch_utils.start()
 
-@stub.local_entrypoint()
+@app.local_entrypoint()
 def main():
     run.remote()
