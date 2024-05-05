@@ -29,12 +29,8 @@ image=(
 
 app = modal.App("stable-diffusion-webui", image=image)
 
-PORT = 8000
-MINUTES = 60
 
 @app.function(gpu="T4", timeout=60000)
-@modal.web_server(port=PORT, startup_timeout=3 * MINUTES)
-
 
 def run():
     # os.system(f"git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/stable-diffusion-webui")
@@ -63,17 +59,15 @@ def run():
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/juggernaut-xl/resolve/main/juggernautXL_version2.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o juggernautXL_version2.safetensors")
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/sd_xl_refiner_1.0/resolve/main/sd_xl_refiner_1.0_0.9vae.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o sd_xl_refiner_1.0_0.9vae.safetensors")
     # os.system(f"sed -i -e 's/\["sd_model_checkpoint"\]/\["sd_model_checkpoint","sd_vae","CLIP_stop_at_last_layers"\]/g' /content/stable-diffusion-webui/modules/shared_options.py") 
-    subprocess.Popen(
-        [
-            "python",
-            "launch.py",
-            "--listen",
-            "0.0.0.0",
-            "--port",
-            str(PORT),
-            "--always-high-vram",
-            "--xformers",
-            "--theme dark",
-            "--gradio-debug",
-        ]
-    )
+    os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
+    # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
+    sys.path.append('/content/stable-diffusion-webui')
+    sys.argv = shlex.split("--cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
+    from modules import launch_utils
+    launch_utils.startup_timer.record("initial startup")
+    launch_utils.prepare_environment()
+    launch_utils.start()
+
+@stub.local_entrypoint()
+def main():
+    run.remote()
