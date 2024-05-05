@@ -1,7 +1,7 @@
 import modal, os, sys, shlex, subprocess
 
 app = modal.App("stable-diffusion-webui")
-#volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_missing=True)
+volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_missing=True)
 
 @app.function(
     image=(
