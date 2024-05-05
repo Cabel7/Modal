@@ -28,6 +28,7 @@ volume = modal.NetworkFileSystem.from_name("stable-diffusion-webui", create_if_m
         .run_commands("git clone -b v2.6 https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui")
     ),
     gpu="T4",
+    timeout=60000,
 )
 
 
