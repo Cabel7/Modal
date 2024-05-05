@@ -30,7 +30,7 @@ image=(
 app = modal.App("stable-diffusion-webui", image=image)
 
 
-@app.function(gpu="T4", timeout=60000)
+# @app.function(gpu="T4", timeout=60000)
 
 async def run():
     # os.system(f"git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/stable-diffusion-webui")
