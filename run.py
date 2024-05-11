@@ -1,5 +1,5 @@
 
-import modal, os, sys, shlex
+import modal, os, sys, shlex, subprocess
 
 app = modal.App("stable-diffusion-webui")
 
@@ -38,7 +38,7 @@ async def run():
     os.system(f"git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git /content/stable-diffusion-webui/extensions/tag-autocomplete") 
     os.system(f"git clone https://github.com/camenduru/stable-diffusion-webui-huggingface /content/stable-diffusion-webui/extensions/stable-diffusion-webui-huggingface") 
     # os.system(f"git clone https://github.com/Cabel7/Webui/tree/bump-Pillow-blendmodes-dependency/modules /content/stable-diffusion-webui/modules") 
-    # os.system(f"git clone https://github.com/XavierXiao/Dreambooth-Stable-Diffusion /content/stable-diffusion-webui/extensions/Dreambooth-Stable-Diffusion") 
+    os.system(f"git clone https://github.com/XavierXiao/Dreambooth-Stable-Diffusion /content/stable-diffusion-webui/extensions/Dreambooth-Stable-Diffusion") 
     os.system(f"rm -rf /content/stable-diffusion-webui/modules")
     # os.system(f"wget https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/master/modules /content/stable-diffusion-webui/modules")
     os.system(f"git clone https://github.com/Cabel7/modules /content/stable-diffusion-webui/modules") 
@@ -58,13 +58,23 @@ async def run():
     # os.system(f"sed -i -e 's/\["sd_model_checkpoint"\]/\["sd_model_checkpoint","sd_vae","CLIP_stop_at_last_layers"\]/g' /content/stable-diffusion-webui/modules/shared_options.py") 
     os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
     # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
-    sys.path.append('/content/stable-diffusion-webui')
-    sys.argv = shlex.split("--cors-allow-origins=* --xformers --theme dark --gradio-debug --share --enable-insecure-extension-access")
-    from modules import launch_utils
-    launch_utils.startup_timer.record("initial startup")
-    launch_utils.prepare_environment()
-    launch_utils.start()
+def run():
+    import os
+    import subprocess
 
-@app.local_entrypoint()
-def main():
-    run.remote()
+    # change the working directory to the Fooocus directory.
+    os.chdir("/Fooocus")
+
+    # launch the Fooocus application using a subprocess that listens on the specified port
+    subprocess.Popen(
+        [
+            "python",
+            "launch.py",
+            "--listen",
+            "0.0.0.0",
+            "--port",
+            str(PORT),
+            "--always-high-vram",
+        ]
+    )
+   
