@@ -63,7 +63,7 @@ def run():
     import subprocess
 
     # change the working directory to the Fooocus directory.
-    os.chdir("/Fooocus")
+    os.chdir("/content/stable-diffusion-webui")
 
     # launch the Fooocus application using a subprocess that listens on the specified port
     subprocess.Popen(
