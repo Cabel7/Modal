@@ -1,4 +1,4 @@
-import modal, os, sys, shlex,
+import modal, os, sys, shlex
 
 app = modal.App("stable-diffusion-webui")
 
