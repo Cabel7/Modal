@@ -71,10 +71,10 @@ async def run():
             "0.0.0.0",
             "--port",
             str(PORT),
-            "--xformers"
-            "--theme dark"
-            "--gradio-debug"
-            "--enable-insecure-extension-access"
+            "--xformers",
+            "--theme dark",
+            "--gradio-debug",
+            "--enable-insecure-extension-access",
             "--always-high-vram",
         ]
     )
