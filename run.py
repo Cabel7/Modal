@@ -56,24 +56,25 @@ async def run():
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/ckpt/sd_xl_refiner_1.0/resolve/main/sd_xl_refiner_1.0_0.9vae.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o sd_xl_refiner_1.0_0.9vae.safetensors")
     
     # os.system(f"sed -i -e 's/\["sd_model_checkpoint"\]/\["sd_model_checkpoint","sd_vae","CLIP_stop_at_last_layers"\]/g' /content/stable-diffusion-webui/modules/shared_options.py") 
-    os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
+    # os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
     # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
-def run():
-    import os
-    import subprocess
-
+async def run():
     # change the working directory to the Fooocus directory.
-    os.chdir("/content/stable-diffusion-webui")
+    os.chdir(f"/content/stable-diffusion-webui") 
 
     # launch the Fooocus application using a subprocess that listens on the specified port
     subprocess.Popen(
         [
             "python",
             "launch.py",
-            "--listen",
+            "--share",
             "0.0.0.0",
             "--port",
             str(PORT),
+            "--xformers"
+            "--theme dark"
+            "--gradio-debug
+            "--enable-insecure-extension-access"
             "--always-high-vram",
         ]
     )
