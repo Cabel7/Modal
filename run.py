@@ -58,7 +58,7 @@ async def run():
     # os.system(f"sed -i -e 's/\["sd_model_checkpoint"\]/\["sd_model_checkpoint","sd_vae","CLIP_stop_at_last_layers"\]/g' /content/stable-diffusion-webui/modules/shared_options.py") 
     # os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
     # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
-async def run():
+
     # change the working directory to the Fooocus directory.
     os.chdir(f"/content/stable-diffusion-webui") 
 
