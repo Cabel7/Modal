@@ -7,7 +7,7 @@ app = modal.App("stable-diffusion-webui")
 @app.function(
     image=(
         modal.Image.from_registry(
-            "nvidia/cuda:11.5.0-base-ubuntu22.04", add_python="3.11"
+            "nvidia/cuda:11.6.1-base-ubuntu20.04", add_python="3.11"
         )
         .apt_install(
             "software-properties-common",
