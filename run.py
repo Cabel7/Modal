@@ -1,6 +1,7 @@
 import modal, os, sys, shlex, subprocess
 from pathlib import PosixPath
 from pathlib import Path
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-12.2/targets/x86_64-linux/lib/libcudart.so
 
 app = modal.App("stable-diffusion-webui")
 
