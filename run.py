@@ -1,7 +1,6 @@
 import modal, os, sys, shlex, subprocess
 from pathlib import PosixPath
 from pathlib import Path
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-12.2/targets/x86_64-linux/lib/libcudart.so
 
 app = modal.App("stable-diffusion-webui")
 
@@ -33,7 +32,7 @@ app = modal.App("stable-diffusion-webui")
     gpu="T4",
     timeout=60000,
 )
-
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-12.2/targets/x86_64-linux/lib/libcudart.so
 async def run():
     os.system(f"git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/stable-diffusion-webui")
     # os.system(f"git clone https://github.com/Cabel7/Webui /content/stable-diffusion-webui")
