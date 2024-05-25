@@ -1,6 +1,4 @@
 import modal, os, sys, shlex, subprocess
-from pathlib import PosixPath
-from pathlib import Path
 
 app = modal.App("stable-diffusion-webui")
 
