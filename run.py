@@ -31,7 +31,6 @@ app = modal.App("stable-diffusion-webui")
 
 async def run():
     os.system(f"git clone https://github.com/Cabel7/Stable-Diffusion /content/stable-diffusion-webui")
-    # os.system(f"export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-12.2/targets/x86_64-linux/lib")
     # os.system(f"git clone https://github.com/Cabel7/Webui /content/stable-diffusion-webui")
     # os.system(f"git clone -b v2.6 https://github.com/camenduru/stable-diffusion-webui /content/stable-diffusion-webui")
     os.system(f"git clone https://github.com/camenduru/sd-civitai-browser /content/stable-diffusion-webui/extensions/sd-civitai-browser")
