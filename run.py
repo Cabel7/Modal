@@ -41,6 +41,7 @@ async def run():
     os.chdir(f"/content/stable-diffusion-webui")   
     os.system(f"git reset --hard")
     os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/Jagerblue/Dream/resolve/main/Quix_5843.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o Quix_5843.safetensors")
+    os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/Jagerblue/quix-v1/resolve/main/Quix_v1.ckpt -d /content/stable-diffusion-webui/models/Stable-diffusion -o Quix_v1.ckpt")
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/Jagerblue/Sdxl/resolve/main/Anime_Pastel_Face.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o Anime_Pastel_Face.safetensors")
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/Jagerblue/Sdxl/resolve/main/Goofy_Anime_Pastel.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o Goofy_Anime_Pastel.safetensors")
     # os.system(f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/Jagerblue/Sdxl/resolve/main/Hass_APF.safetensors -d /content/stable-diffusion-webui/models/Stable-diffusion -o Hass_APF.safetensors")
@@ -53,7 +54,7 @@ async def run():
     os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
     # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
     sys.path.append('/content/stable-diffusion-webui')
-    sys.argv = shlex.split("--cors-allow-origins=* --reinstall-xformers --theme dark --gradio-debug --share --enable-insecure-extension-access")
+    sys.argv = shlex.split("--cors-allow-origins=* --xformers --theme dark --gradio-debug --share --enable-insecure-extension-access")
     from modules import launch_utils
     launch_utils.startup_timer.record("initial startup")
     launch_utils.prepare_environment()
