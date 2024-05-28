@@ -22,7 +22,7 @@ app = modal.App("stable-diffusion-webui")
             "libxext6",
             "ffmpeg",
         )
-        .run_commands("pip install -q --force-reinstall --pre torch==2.2.0.dev20231010+cu118 torchvision==0.17.0 torchaudio==2.2.0 torchtext torchdata --extra-index-url https://download.pytorch.org/whl/nightly/cu118")
+        .run_commands("pip install -q torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 torchtext torchdata --index-url https://download.pytorch.org/whl/cu121")
         .run_commands("pip install -q xformers==0.0.23 triton")
     ),
     gpu="T4",
