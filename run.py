@@ -5,7 +5,7 @@ app = modal.App("stable-diffusion-webui")
 @app.function(
     image=(
         modal.Image.from_registry(
-            "nvidia/cuda:12.4.0-base-ubuntu22.04", add_python="3.10"
+            "nvidia/cuda:12.4.0-base-ubuntu22.04", add_python="3.11"
         )
         .apt_install(
             "software-properties-common",
@@ -22,7 +22,7 @@ app = modal.App("stable-diffusion-webui")
             "libxext6",
             "ffmpeg",
         )
-        .run_commands("pip install -q torch==2.1.2+cu118 torchvision==0.16.2+cu118 torchaudio==2.1.2+cu118 torchtext torchdata --extra-index-url https://download.pytorch.org/whl/cu118")
+        .run_commands("pip install -q torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2+cu121 torchtext torchdata --extra-index-url https://download.pytorch.org/whl/cu121")
         .run_commands("pip install -q xformers==0.0.23 triton")
     ),
     gpu="T4",
