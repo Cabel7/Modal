@@ -54,7 +54,7 @@ async def run():
     os.environ['HF_HOME'] = '/content/stable-diffusion-webui/cache/huggingface'
     # os.system(f"python launch.py --cors-allow-origins=* --xformers --theme dark --gradio-debug --share")
     sys.path.append('/content/stable-diffusion-webui')
-    sys.argv = shlex.split("--cors-allow-origins=* --xformers --theme dark --gradio-debug --share --enable-insecure-extension-access")
+    sys.argv = shlex.split("--cors-allow-origins=* --xformers --theme dark --gradio-debug --share --enable-insecure-extension-access --disable-safe-unpickle")
     from modules import launch_utils
     launch_utils.startup_timer.record("initial startup")
     launch_utils.prepare_environment()
